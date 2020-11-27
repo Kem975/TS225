@@ -24,12 +24,6 @@ Y = 0.299*A(:,:,1) + 0.587*A(:,:,2) + 0.114*A(:,:,3);
 
 %% Code-Barre
 
-
-rayon = zeros(2, rayon_dist);
-
-line_x = linspace( x(1), x(2), rayon_dist );
-line_y = linspace( y(1), y(2), rayon_dist );
-
 rayon = zeros(3, rayon_dist);
 
 for i=1:rayon_dist
@@ -39,7 +33,7 @@ for i=1:rayon_dist
     rayon(3, i) = double(Y( rayon(2,i), rayon(1,i) ));   
 end
 
-plot(line_x, line_y),legend('Rayon sélectionné');
+plot(rayon(1,:), rayon(2,:)),legend('Rayon sélectionné');
 subplot(122)
 plot(rayon(3,:))
 
