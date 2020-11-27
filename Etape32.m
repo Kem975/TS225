@@ -44,8 +44,40 @@ H = hist(rayon(3,:),N);
 
 [seuil,idx] = otsu(H,N);
 
-bin = rayon(3,:)<idx;
+bin = double(rayon(3,:)<idx);
 
+
+%%  Bords
+
+for i=1:length(bin)
+    if(bin(i)==1)
+        coord_debut = [rayon(1,i), rayon(2,i)];
+        bin = bin(i:end);
+        break;
+    end
+end
+
+for i=length(bin):-1:1
+    if(bin(i)==1)
+        coord_fin = [rayon(1,i), rayon(2,i)];
+        bin = bin(1:i);
+        break;
+    end
+end
+
+
+%% Ré-échantillonnage
+
+dist_xcb = abs(round(coord_debut(1) - coord_fin(1)));
+dist_ycb = abs(round(coord_debut(2) - coord_fin(2)));
+
+dist_cb = round( sqrt( dist_xcb^2 + dist_ycb^2 ) );
+
+rayon_echantillonne = zeros(2, 95);
+
+for i=1:95
+    rayon_echantillonne(1:2,i) = round( [coord_debut(1);coord_debut(2)] + (i/94)*([coord_debut(1);coord_debut(2)] - [coord_fin(1);coord_fin(2)]) );
+end
 
 
 

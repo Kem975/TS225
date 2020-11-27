@@ -7,7 +7,7 @@ function [k,idx] = otsu( H, N )
         premier_terme= ( mu(H, N, N)-mu(H,i,N) )^2;
         crit(i) = w_k*premier_terme + (1-w_k)*mu_k_squared;
     end
-    [k,idx] = max(crit),
+    [k,idx] = max(crit);
 end
 
 
