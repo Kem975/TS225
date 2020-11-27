@@ -18,7 +18,6 @@ y = [fix(y(1)) fix(y(2))];
 X_dist = x(2)-x(1);
 Y_dist = y(2)-y(1);
 rayon_dist = round( sqrt( X_dist^2 + Y_dist^2 ) );
-vect = zeros(1, round(rayon_dist));
 N = 256;
 
 
