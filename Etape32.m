@@ -9,6 +9,7 @@ subplot(121)
 imagesc(A);axis('square');
 hold all
 
+
 %% Paramètres
 
 [h,w,c] = size(A);
@@ -35,6 +36,7 @@ end
 plot(line_x, line_y),legend('Rayon sélectionné');
 subplot(122)
 plot(rayon(3,:))
+
 
 %% Otsu
 
