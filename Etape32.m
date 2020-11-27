@@ -3,7 +3,7 @@ clear all; close all; clc
 %% Pré-exécution
 
 addpath('codes_barres_img/')
-A = imread('facile.png');
+A = imread('difficile.jpg');
 figure,
 subplot(121)
 imagesc(A);axis('square');
@@ -41,11 +41,11 @@ plot(rayon(3,:))
 %% Otsu
 
 H = hist(rayon(3,:),N);
-[k,idx] = max(H);
 
-w_k = sum( H(1:idx) ) / sum( H(1:N) );
+[seuil,idx] = otsu(H,N);
 
-crit_k = w_k*( mu(H, N, N)-mu(H,idx,N) )^2 + (1-w_k)*mu(H,idx,N)^2;
+bin = rayon(3,:)<idx;
+
 
 
 
