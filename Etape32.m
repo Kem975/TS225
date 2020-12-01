@@ -33,6 +33,8 @@ for i=1:rayon_dist
 end
 
 rayon(3,:) = flip(rayon(3,:));
+rayon(1,:) = flip(rayon(1,:));
+rayon(2,:) = flip(rayon(2,:));
 
 plot(rayon(1,:), rayon(2,:));
 
