@@ -58,17 +58,17 @@ function tab = iden(sign)
         for j = 1:10
            if lettre == A(j)
               famille(i)=0;
-              tab(i) = j-1;
+              tab(i+1) = j-1;
               break;
            end
            if lettre == B(j)
               famille(i)=1;
-              tab(i) = j-1;
+              tab(i+1) = j-1;
               break;
            end
            if lettre == C(j)
               famille(i)=2;
-              tab(i) = j-1;
+              tab(i+1) = j-1;
               break;
            end
         end
@@ -77,7 +77,7 @@ function tab = iden(sign)
     %determination du premier chiffre
     for i=1:10
         if famille == premier(i)
-            tab(0)=i-1;
+            tab(1)=i-1;
             break;
         end
     end
@@ -89,15 +89,15 @@ function tab = iden(sign)
         lettre = sign_garde_final(1+(i-1)*7:i*7);
         for j = 1:10
            if lettre == A(j)
-              tab(i+6) = j-1;
+              tab(i+7) = j-1;
               break;
            end
            if lettre == B(j)
-              tab(i+6) = j-1;
+              tab(i+7) = j-1;
               break;
            end
            if lettre == C(j)
-              tab(i+6) = j-1;
+              tab(i+7) = j-1;
               break;
            end
         end
