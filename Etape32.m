@@ -32,9 +32,10 @@ for i=1:rayon_dist
     rayon(3, i) = double(Y( rayon(2,i), rayon(1,i) ));   
 end
 
-rayon(3,:) = flip(rayon(3,:));
+
 rayon(1,:) = flip(rayon(1,:));
 rayon(2,:) = flip(rayon(2,:));
+rayon(3,:) = flip(rayon(3,:));
 
 plot(rayon(1,:), rayon(2,:));
 
@@ -76,11 +77,17 @@ end
 
 rayon_echantillonne = zeros(3, 95);
 
+
 coord_debut_mem = coord_debut;
 coord_fin_mem = coord_fin;
 
-coord_debut = min(coord_debut, coord_fin);
-coord_fin = max(coord_debut_mem, coord_fin_mem);
+if Y_dist>X_dist 
+    coord_debut = [coord_debut(1); min(coord_debut(2), coord_fin(2))];
+    coord_fin = [coord_fin(1); max(coord_debut_mem(2), coord_fin_mem(2))];
+else
+    coord_debut = [min(coord_debut(1), coord_fin(1)), coord_debut(2)];
+    coord_fin = [max(coord_debut_mem(1), coord_fin_mem(1)) ; coord_fin(2)];
+end
 
 multiple = ceil(rayon_dist/95);
 dist_finale = multiple*95;

@@ -52,3 +52,4 @@ tmp = conv(bin,debut,'same');
 [~,ind] = max(tmp);
 
 plot(rayon(1,ind:ind+3*unite),rayon(2,ind:ind+3*unite));
+legend('test');
