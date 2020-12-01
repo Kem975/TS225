@@ -65,13 +65,10 @@ for i=length(bin):-1:1
     end
 end
 
+%tab = iden(bin);
+
 
 %% Ré-échantillonnage
-
-dist_xcb = abs(round(coord_debut(1) - coord_fin(1)));
-dist_ycb = abs(round(coord_debut(2) - coord_fin(2)));
-
-dist_cb = round( sqrt( dist_xcb^2 + dist_ycb^2 ) );
 
 rayon_echantillonne = zeros(2, 95);
 
