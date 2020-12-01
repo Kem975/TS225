@@ -35,6 +35,9 @@ end
 
 plot(rayon(1,:), rayon(2,:)),legend('Rayon sélectionné');
 subplot(122)
+
+rayon(3,:) = flip(rayon(3,:));
+
 plot(rayon(3,:))
 
 
@@ -70,13 +73,20 @@ end
 
 %% Ré-échantillonnage
 
-rayon_echantillonne = zeros(2, 95);
+rayon_echantillonne = zeros(3, 95);
+
+coord_debut_mem = coord_debut;
+coord_fin_mem = coord_fin;
+
+coord_debut = min(coord_debut, coord_fin)
+coord_fin = max(coord_debut_mem, coord_fin_mem)
 
 for i=1:95
     rayon_echantillonne(1:2,i) = round( [coord_debut(1);coord_debut(2)] + (i/94)*([coord_debut(1);coord_debut(2)] - [coord_fin(1);coord_fin(2)]) );
+    rayon_echantillonne(3,i) = double(Y( rayon_echantillonne(2,i), rayon_echantillonne(1,i) ))
 end
 
-
+bin_rayon = double(rayon_echantillonne(3,:)<idx);
 
 
 
