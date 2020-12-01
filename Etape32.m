@@ -3,7 +3,7 @@ clear all; close all; clc
 %% Pré-exécution
 
 addpath('codes_barres_img/')
-A = imread('difficile.jpg');
+A = imread('facile.png');
 figure,
 imagesc(A);axis('square');
 hold all
@@ -70,13 +70,11 @@ for i=length(bin):-1:1
     end
 end
 
-%tab = iden(bin);
 
 
 %% Ré-échantillonnage
 
 rayon_echantillonne = zeros(3, 95);
-
 
 coord_debut_mem = coord_debut;
 coord_fin_mem = coord_fin;
@@ -85,7 +83,7 @@ if Y_dist>X_dist
     coord_debut = [coord_debut(1); min(coord_debut(2), coord_fin(2))];
     coord_fin = [coord_fin(1); max(coord_debut_mem(2), coord_fin_mem(2))];
 else
-    coord_debut = [min(coord_debut(1), coord_fin(1)), coord_debut(2)];
+    coord_debut = [min(coord_debut(1), coord_fin(1)) ; coord_debut(2)];
     coord_fin = [max(coord_debut_mem(1), coord_fin_mem(1)) ; coord_fin(2)];
 end
 
@@ -97,8 +95,7 @@ for i=0:dist_finale-1
     rayon_echantillonne(3,i+1) = double(Y( rayon_echantillonne(2,i+1), rayon_echantillonne(1,i+1) ));
 end
 
-plot(rayon_echantillonne(1,:), rayon_echantillonne(2,:)),
-legend('Rayon sélectionné', 'Rayon recadré et échantillonné');
+
 
 %% Binarisation avec le rayon final
 
@@ -109,6 +106,12 @@ H_bordered = hist(rayon_echantillonne(3,:),N);
 bin_rayon = double(rayon_echantillonne(3,:)<idx_final);
 
 
+%% Affichage
+
+%Toujours la figure avec le code-barre
+plot(rayon_echantillonne(1,:), rayon_echantillonne(2,:)),
+legend('Rayon sélectionné', 'Rayon recadré et échantillonné');
+
 figure,
 subplot(121)
 plot(rayon(3,:)), title('Intensité du rayon sélectionné');
@@ -116,5 +119,7 @@ subplot(122)
 plot(bin_rayon), title('Binarisation du rayon recadré');
 
 
+%% Identification
 
+tab = iden(bin_rayon);
 
