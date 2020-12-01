@@ -81,9 +81,12 @@ coord_fin_mem = coord_fin;
 coord_debut = min(coord_debut, coord_fin)
 coord_fin = max(coord_debut_mem, coord_fin_mem)
 
-for i=1:95
-    rayon_echantillonne(1:2,i) = round( [coord_debut(1);coord_debut(2)] + (i/94)*([coord_debut(1);coord_debut(2)] - [coord_fin(1);coord_fin(2)]) );
-    rayon_echantillonne(3,i) = double(Y( rayon_echantillonne(2,i), rayon_echantillonne(1,i) ))
+multiple = ceil(rayon_dist/95);
+dist_finale = multiple*95;
+
+for i=0:dist_finale-1
+    rayon_echantillonne(1:2,i+1) = round( coord_debut' + (i/dist_finale)*(coord_debut' - coord_fin') );
+    rayon_echantillonne(3,i+1) = double(Y( rayon_echantillonne(2,i+1), rayon_echantillonne(1,i+1) ))
 end
 
 bin_rayon = double(rayon_echantillonne(3,:)<idx);
