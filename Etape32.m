@@ -49,10 +49,12 @@ bin = double(rayon(3,:)<idx);
 
 %%  Bords
 
+bin_bordered = bin;
+
 for i=1:length(bin)
     if(bin(i)==1)
         coord_debut = [rayon(1,i), rayon(2,i)];
-        bin = bin(i:end);
+        bin_bordered = bin(i:end);
         break;
     end
 end
@@ -60,7 +62,7 @@ end
 for i=length(bin):-1:1
     if(bin(i)==1)
         coord_fin = [rayon(1,i), rayon(2,i)];
-        bin = bin(1:i);
+        bin_bordered = bin(1:i);
         break;
     end
 end
