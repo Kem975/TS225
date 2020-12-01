@@ -5,7 +5,6 @@ clear all; close all; clc
 addpath('codes_barres_img/')
 A = imread('difficile.jpg');
 figure,
-subplot(121)
 imagesc(A);axis('square');
 hold all
 
@@ -33,12 +32,10 @@ for i=1:rayon_dist
     rayon(3, i) = double(Y( rayon(2,i), rayon(1,i) ));   
 end
 
-plot(rayon(1,:), rayon(2,:)),legend('Rayon sélectionné');
-subplot(122)
-
 rayon(3,:) = flip(rayon(3,:));
 
-plot(rayon(3,:))
+plot(rayon(1,:), rayon(2,:));
+
 
 
 %% Otsu
@@ -89,9 +86,23 @@ for i=0:dist_finale-1
     rayon_echantillonne(3,i+1) = double(Y( rayon_echantillonne(2,i+1), rayon_echantillonne(1,i+1) ));
 end
 
-bin_rayon = double(rayon_echantillonne(3,:)<idx);
+plot(rayon_echantillonne(1,:), rayon_echantillonne(2,:)),
+legend('Rayon sélectionné', 'Rayon recadré et échantillonné');
+
+%% Binarisation avec le rayon final
+
+H_bordered = hist(rayon_echantillonne(3,:),N);
+
+[seuil_finale,idx_final] = otsu(H_bordered,N);
+
+bin_rayon = double(rayon_echantillonne(3,:)<idx_final);
 
 
+figure,
+subplot(121)
+plot(rayon(3,:)), title('Intensité du rayon sélectionné');
+subplot(122)
+plot(bin_rayon), title('Binarisation du rayon recadré');
 
 
 
