@@ -3,7 +3,10 @@ clear all; close all; clc
 %% Pré-exécution
 
 addpath('codes_barres_img/')
-A = imread('difficile.jpg');
+%A = imread('code_barre_bouteille.jpg');
+%A = imread('difficile.jpg');
+A = imread('cahier.jpg');
+%A = imread('facile.png');
 figure,
 imagesc(A);axis('square');
 hold all
@@ -123,3 +126,4 @@ plot(bin_rayon), title('Binarisation du rayon recadré');
 
 tab = iden(bin_rayon,multiple);
 
+tab'
