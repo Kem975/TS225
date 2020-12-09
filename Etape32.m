@@ -4,10 +4,10 @@ clear all; close all; clc
 
 addpath('codes_barres_img/')
 %A = imread('code_barre_bouteille.jpg');
-%A = imread('difficile.jpg');
+A = imread('difficile.jpg');
 %A = imread('cahier.jpg');
 %A = imread('facile.png');
-A = imread('twix.jpg');
+%A = imread('twix.jpg');
 figure,
 imshow(A);
 hold all
@@ -36,6 +36,7 @@ for i=1:rayon_dist
     rayon(3, i) = double(Y( rayon(2,i), rayon(1,i) ));   
 end
 
+rayon(3,:) = rayon(3,:)/max(rayon(3,:))*255;
 
 rayon(1,:) = flip(rayon(1,:));
 rayon(2,:) = flip(rayon(2,:));
