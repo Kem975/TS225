@@ -6,7 +6,7 @@ function tab = iden(sign,unite)
         sign_tmp(i) = fix(sum(sign(1+(i-1)*unite:i*unite))/unite);
     end
     %type de message
-    A = [...
+    A = ~[...
         [1,1,1,0,0,1,0];...
         [1,1,0,0,1,1,0];...
         [1,1,0,1,1,0,0];...
@@ -17,7 +17,7 @@ function tab = iden(sign,unite)
         [1,0,0,0,1,0,0];...
         [1,0,0,1,0,0,0];...
         [1,1,1,0,1,0,0] ];
-    B = [...
+    B = ~[...
         [1,0,1,1,0,0,0];...
         [1,0,0,1,1,0,0];...
         [1,1,0,0,1,0,0];...
@@ -28,7 +28,7 @@ function tab = iden(sign,unite)
         [1,1,0,1,1,1,0];...
         [1,1,1,0,1,1,0];...
         [1,1,0,1,0,0,0] ];
-    C = [...
+    C = ~[...
         [0,0,0,1,1,0,1];...
         [0,0,1,1,0,0,1];...
         [0,0,1,0,0,1,1];...
@@ -47,7 +47,7 @@ function tab = iden(sign,unite)
         [0,0,1,1,0,1];...
         [0,0,1,1,1,0];...
         [0,1,0,0,1,1];...
-        [1,0,0,1,1,0];...
+        [0,1,1,0,0,1];...
         [0,1,1,1,0,0];...
         [0,1,0,1,0,1];...
         [0,1,0,1,1,0];...
@@ -64,19 +64,19 @@ function tab = iden(sign,unite)
         minfam = -1;
         lettre = sign_garde(1+(i-1)*7:i*7);
         for j = 1:10
-            norma = norm(lettre - A(j,:));
+            norma = norm(lettre' - A(j,:));
             if norma < minval
                minval = norma;
                minind = j;
                minfam = 0;
             end
-            normb = norm(lettre - B(j,:));
+            normb = norm(lettre' - B(j,:));
             if normb < minval
                minval = normb;
                minind = j;
                minfam = 1;
             end
-            normc = norm(lettre - C(j,:));
+            normc = norm(lettre' - C(j,:));
             if normc < minval
                minval = normc;
                minind = j;
@@ -90,10 +90,10 @@ function tab = iden(sign,unite)
     %determination du premier chiffre
     minind = -1;
     minval = 999;
-    for i=1:6
-        n = norm(premier(i,:)-famille(i));
+    for i=1:9
+        n = norm(premier(i,:)-famille');
         if n< minval
-            minival = n;
+            minval = n;
             minind = i;
         end
     end
@@ -106,17 +106,17 @@ function tab = iden(sign,unite)
         minind = 0;
         lettre = sign_garde_final(1+(i-1)*7:i*7);
         for j = 1:10
-            norma = norm(lettre - A(j,:));
+            norma = norm(lettre' - A(j,:));
             if norma < minval
                minval = norma;
                minind = j;
             end
-            normb = norm(lettre - B(j,:));
+            normb = norm(lettre' - B(j,:));
             if normb < minval
                minval = normb;
                minind = j;
             end
-            normc = norm(lettre - C(j,:));
+            normc = norm(lettre' - C(j,:));
             if normc < minval
                minval = normc;
                minind = j;
