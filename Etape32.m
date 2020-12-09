@@ -5,10 +5,11 @@ clear all; close all; clc
 addpath('codes_barres_img/')
 %A = imread('code_barre_bouteille.jpg');
 %A = imread('difficile.jpg');
-A = imread('cahier.jpg');
+%A = imread('cahier.jpg');
 %A = imread('facile.png');
+A = imread('twix.jpg');
 figure,
-imagesc(A);axis('square');
+imshow(A);
 hold all
 
 
