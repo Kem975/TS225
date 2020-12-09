@@ -74,7 +74,7 @@ end
 
 %% Ré-échantillonnage
 
-rayon_echantillonne = zeros(3, 95);
+rayon_echantillonne = zeros(3, 95)+1;
 
 coord_debut_mem = coord_debut;
 coord_fin_mem = coord_fin;
@@ -121,5 +121,5 @@ plot(bin_rayon), title('Binarisation du rayon recadré');
 
 %% Identification
 
-tab = iden(bin_rayon);
+tab = iden(bin_rayon,multiple);
 
