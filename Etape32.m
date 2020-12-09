@@ -1,4 +1,4 @@
-clear all; close all; clc 
+clear; close all; clc 
 
 %% Pré-exécution
 
@@ -16,9 +16,9 @@ hold all
 %% Paramètres
 
 [h,w,c] = size(A);
-[x y] = ginput(2);
-x = [fix(x(1)) fix(x(2))];
-y = [fix(y(1)) fix(y(2))];
+[x, y] = ginput(2);  %fonctionne : / fonctionne pas :
+x = [fix(x(1)) fix(x(2))]; % 152 145 / 133 142
+y = [fix(y(1)) fix(y(2))]; % 309 532 / 319 532
 X_dist = x(2)-x(1);
 Y_dist = y(2)-y(1);
 rayon_dist = round( sqrt( X_dist^2 + Y_dist^2 ) );
@@ -128,4 +128,4 @@ plot(bin_rayon), title('Binarisation du rayon recadré');
 
 tab = iden(bin_rayon,multiple);
 
-tab'
+tab
