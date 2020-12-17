@@ -3,8 +3,10 @@ clear; close all; clc
 %% Pré-exécution
 
 addpath('codes_barres_img/')
+%str = 'cahier.jpg';
+%A = imread(str);
 %A = imread('code_barre_bouteille.jpg');
-%A = imread('difficile.jpg');
+A = imread('difficile.jpg');
 %A = imread('facile.png');
 %A = imread('cahier.jpg');
 %A = imread('casino.jpg');
@@ -19,9 +21,9 @@ hold all
 %% Paramètres
 
 [h,w,c] = size(A);
-[x, y] = ginput(2); %sur difficile;
-x = [fix(x(1)) fix(x(2))]; %[153,107]; 
-y = [fix(y(1)) fix(y(2))];%[337,529]; 
+[x, y] = ginput(2); 
+x = [fix(x(1)) fix(x(2))]; 
+y = [fix(y(1)) fix(y(2))]; 
 X_dist = x(2)-x(1);
 Y_dist = y(2)-y(1);
 rayon_dist = round( sqrt( X_dist^2 + Y_dist^2 ) );
@@ -39,7 +41,7 @@ for i=1:rayon_dist
     rayon(3, i) = double(Y( rayon(2,i), rayon(1,i) ));   
 end
 
-%rayon(3,:) = rayon(3,:)/max(rayon(3,:))*255;
+
 
 rayon(1,:) = flip(rayon(1,:));
 rayon(2,:) = flip(rayon(2,:));
@@ -84,10 +86,6 @@ end
 
 rayon_echantillonne = zeros(3, 95)+1;
 
-coord_debut_mem = coord_debut;
-coord_fin_mem = coord_fin;
-
-
 multiple = ceil(rayon_dist/95)*2;
 dist_finale = multiple*95;
 
@@ -96,7 +94,6 @@ for i=0:dist_finale-1
     rayon_echantillonne(3,i+1) = double(Y( rayon_echantillonne(2,i+1), rayon_echantillonne(1,i+1) ));
 end
 
-%rayon_echantillonne(3,:) = rayon_echantillonne(3,:)/max(rayon_echantillonne(3,:))*255;
 
 
 
@@ -124,6 +121,4 @@ plot(bin_rayon), title('Binarisation du rayon recadré');
 
 %% Identification
 
-tab = iden(bin_rayon,multiple);
-
-tab
+tab = iden(bin_rayon,multiple)

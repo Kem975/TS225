@@ -125,6 +125,6 @@ function tab = iden(sign,unite)
         tab(i+7) = minind-1;
     end
     
-    tab(13) = 10 - mod(sum(tab(1:2:11)) + 3*sum(tab(2:2:12)),10);
+    tab(13) = mod(10 - mod(sum(tab(1:2:11)) + 3*sum(tab(2:2:12)),10),10);
 
 end
