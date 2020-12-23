@@ -3,25 +3,23 @@ function [D] = detect_interest_area(img_Y)
     [h,w] = size(img_Y);
 
     %Canny
-    sigma_g = 80;
-    sigma_g = min(sigma_g,100);
+    sigma_g = min(h,w)/max(h,w);
     N_canny = fix(3*sigma_g);
     [X, Y] = meshgrid(-N_canny:N_canny);
-    canny_x = -X/(2*pi*sigma_g^4).*exp(-(X.^2+Y.^2)/(2*sigma_g^2));
-    canny_y = -Y/(2*pi*sigma_g^4).*exp(-(X.^2+Y.^2)/(2*sigma_g^2));
+    canny_x = X/(2*pi*sigma_g^4).*exp(-(X.^2+Y.^2)/(2*sigma_g^2));
+    canny_y = Y/(2*pi*sigma_g^4).*exp(-(X.^2+Y.^2)/(2*sigma_g^2));
     9
     grad_x = conv2(img_Y,canny_x,'same');
     10
     grad_y = conv2(img_Y,canny_y,'same');
-        
+            
     norm_grad = sqrt(grad_x.^2+grad_y.^2);
     
     grad_x = grad_x./norm_grad;
     grad_y = grad_y./norm_grad;
     11
     %Gaussien
-    sigma_t = 1;
-    sigma_t = min(sigma_t,25);
+    sigma_t =0.01*max(h,w)^2/min(h,w);
     N_gauss = fix(3*sigma_t);
     [X,Y] = meshgrid(-N_gauss:N_gauss);
     W = 1/(2*pi*sigma_t^2).*exp(-(X.^2+Y.^2)/(2*sigma_t^2));  
