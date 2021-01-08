@@ -6,9 +6,9 @@ addpath('codes_barres_img/')
 %str = 'cahier.jpg';
 %A = imread(str);
 %A = imread('code_barre_bouteille.jpg');
-A = imread('difficile.jpg');
+%A = imread('difficile.jpg');
 %A = imread('facile.png');
-%A = imread('cahier.jpg');
+A = imread('cahier.jpg');
 %A = imread('casino.jpg');
 %A = imread('mars.jpg');
 Y = 0.299*A(:,:,1) + 0.587*A(:,:,2) + 0.114*A(:,:,3);
@@ -86,7 +86,7 @@ end
 
 rayon_echantillonne = zeros(3, 95)+1;
 
-multiple = ceil(rayon_dist/95)*2;
+multiple = ceil(rayon_dist/95)*4;
 dist_finale = multiple*95;
 
 for i=0:dist_finale-1
