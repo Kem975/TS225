@@ -6,9 +6,13 @@ addpath('codes_barres_img/')
 %str = 'cahier.jpg';
 %A = imread(str);
 %A = imread('code_barre_bouteille.jpg');
+<<<<<<< HEAD
 A = imread('album.jpg');
+=======
+%A = imread('difficile.jpg');
+>>>>>>> 2cfd7806762010d732b6c46563f080e2db547b70
 %A = imread('facile.png');
-%A = imread('cahier.jpg');
+A = imread('cahier.jpg');
 %A = imread('casino.jpg');
 %A = imread('mars.jpg');
 Y = 0.299*A(:,:,1) + 0.587*A(:,:,2) + 0.114*A(:,:,3);
@@ -21,6 +25,7 @@ hold all
 %% Paramètres
 
 [h,w,c] = size(A);
+%[x y] = tirage_rayon(A) % Remplacer A par "région d'intérêt"
 [x, y] = ginput(2); 
 x = [fix(x(1)) fix(x(2))]; 
 y = [fix(y(1)) fix(y(2))]; 
@@ -85,7 +90,7 @@ end
 
 rayon_echantillonne = zeros(3, 95)+1;
 
-multiple = ceil(rayon_dist/95)*2;
+multiple = ceil(rayon_dist/95)*4;
 dist_finale = multiple*95;
 
 for i=0:dist_finale-1
