@@ -21,6 +21,7 @@ hold all
 %% Paramètres
 
 [h,w,c] = size(A);
+%[x y] = tirage_rayon(A) % Remplacer A par "région d'intérêt"
 [x, y] = ginput(2); 
 x = [fix(x(1)) fix(x(2))]; 
 y = [fix(y(1)) fix(y(2))]; 
