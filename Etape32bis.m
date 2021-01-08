@@ -3,7 +3,7 @@ clear all; close all; clc
 %% Pré-exécution
 
 addpath('codes_barres_img/')
-A = imread('difficile.jpg');
+A = imread('bouteille2.jpg');
 figure,
 imagesc(A);axis('square');
 hold all

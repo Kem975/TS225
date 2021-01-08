@@ -6,7 +6,7 @@ addpath('codes_barres_img/')
 %str = 'cahier.jpg';
 %A = imread(str);
 %A = imread('code_barre_bouteille.jpg');
-A = imread('difficile.jpg');
+A = imread('album.jpg');
 %A = imread('facile.png');
 %A = imread('cahier.jpg');
 %A = imread('casino.jpg');
@@ -54,7 +54,6 @@ plot(rayon(1,:), rayon(2,:));
 %% Otsu
 
 H = hist(rayon(3,:),0:N-1);
-
 [seuil,idx] = otsu(H,N);
 
 bin = double(rayon(3,:)<idx);
