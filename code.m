@@ -1,11 +1,5 @@
-function tab = code(A)
-    Y = 0.299*A(:,:,1) + 0.587*A(:,:,2) + 0.114*A(:,:,3);
-    %figure,
-    %imshow(Y);
-    %imshow(A);
-    %hold all
-
-    M = do_masque(double(Y));
+function tab = code(M,A,Y)
+   
     [x,y,Ex,Ey] = tirage_rayon(M); % Remplacer A par "région d'intérêt"
     x = doformat(x,A);
     y = doformat(y,A);
@@ -25,7 +19,6 @@ function tab = code(A)
     for i=1:rayon_dist
 
         rayon(1:2,i) = round( x - ((i-1)/rayon_dist)*(x - y) );
-        rayon(1:2,i)
         rayon(3, i) = double(Y( rayon(2,i), rayon(1,i) ));   
     end
 

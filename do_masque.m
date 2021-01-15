@@ -1,7 +1,7 @@
 function [M] = do_masque(img_Y)
 [h,w] = size(img_Y);
-%sigma_g =1*[1/3 1/(2*sqrt(2)) 0.5 1/sqrt(2) 1 sqrt(2) 2];
-sigma_g = 0.5;
+sigma_g =1*[1/3 1/(2*sqrt(2)) 0.5 1/sqrt(2) 1 sqrt(2) 2];
+
 D = zeros(h,w,length(sigma_g));
 for i=1:length(sigma_g)
     fprintf(1,"Calcul n°%i\n",i);
