@@ -6,25 +6,23 @@ function tab = code(A)
     %hold all
 
 
-    [h,w,c] = size(A);
     [x y] = tirage_rayon(A(:,:,1)); % Remplacer A par "région d'intérêt"
+    x = doformat(x,A);
+    y = doformat(y,A);
     %[x, y] = ginput(2); 
-    x = [fix(x(1)) fix(x(2))]; 
-    y = [fix(y(1)) fix(y(2))]; 
-    X_dist = x(2)-x(1);
-    Y_dist = y(2)-y(1);
+%     x = [max(fix(x(1)),fix(x(2))),min(fix(x(1)),fix(x(2)))]; 
+%     y = [max(fix(y(1)),fix(y(2))),min(fix(y(1)),fix(y(2)))]; 
+    X_dist = max(x(2)-x(1),x(1)-x(2));
+    Y_dist = max(y(2)-y(1),y(1)-y(2));
     rayon_dist = round( sqrt( X_dist^2 + Y_dist^2 ) );
     N = 256;
-
-
     %% Code-Barre
 
     rayon = zeros(3, rayon_dist);
 
     for i=1:rayon_dist
 
-        rayon(1:2,i) = round( [x(1);y(1)] + (i/rayon_dist-1)*([x(1);y(1)] - [x(2);y(2)]) );
-
+        rayon(1:2,i) = round( x - ((i-1)/rayon_dist)*(x - y) );
         rayon(3, i) = double(Y( rayon(2,i), rayon(1,i) ));   
     end
 

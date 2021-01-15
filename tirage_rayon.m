@@ -6,7 +6,7 @@ function [ x,y ] = tirage_rayon( region_interet )
     [cov,Ex,Ey]= matrix_cov(region_interet);
     [V,D] = diago(cov);
     dir = V(2,:);
-    min = 0;
+    min = inf;
     max = 0;
     for i = 1:h
         for j = 1:w
@@ -24,7 +24,7 @@ function [ x,y ] = tirage_rayon( region_interet )
     decx = 1.5*randn(1,2);
     decy = 1.5*randn(1,2);
     x = [Ex,Ey] + max * dir + decx;
-    y = [Ex,Ey] + min * dir + decy;
+    y = [Ex,Ey] - max * dir + decy;
     x = fix(x);
     y = fix(y);
     

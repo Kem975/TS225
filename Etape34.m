@@ -19,7 +19,7 @@ nbre_essai = 1;
 result = zeros(13,nbre_essai);
 
 for i=1:nbre_essai
-    result(:,i) = code(A)   
+    result(:,i) = code(A); 
 end
 
 final = zeros(13,1);
