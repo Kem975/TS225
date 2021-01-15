@@ -1,6 +1,5 @@
-function [ x,y ] = tirage_rayon( region_interet )
+function [ x,y,Ex,Ey ] = tirage_rayon( region_interet )
      [h,w,c] = size(region_interet);
-     region_interet=region_interet>-1;
 %     x = [1;w];
 %     y = randi([0 h],1,2);
     [cov,Ex,Ey]= matrix_cov(region_interet);

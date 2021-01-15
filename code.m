@@ -5,8 +5,8 @@ function tab = code(A)
     %imshow(A);
     %hold all
 
-
-    [x y] = tirage_rayon(A(:,:,1)); % Remplacer A par "région d'intérêt"
+    M = do_masque(double(Y));
+    [x,y,Ex,Ey] = tirage_rayon(M); % Remplacer A par "région d'intérêt"
     x = doformat(x,A);
     y = doformat(y,A);
     %[x, y] = ginput(2); 
@@ -23,6 +23,7 @@ function tab = code(A)
     for i=1:rayon_dist
 
         rayon(1:2,i) = round( x - ((i-1)/rayon_dist)*(x - y) );
+        rayon(1:2,i)
         rayon(3, i) = double(Y( rayon(2,i), rayon(1,i) ));   
     end
 

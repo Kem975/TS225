@@ -1,4 +1,4 @@
-clear; close all; clc 
+clear; close all; clc
 
 %% Pré-exécution
 
@@ -6,8 +6,8 @@ addpath('codes_barres_img/')
 %str = 'cahier.jpg';
 %A = imread(str);
 %A = imread('code_barre_bouteille.jpg');
-%A = imread('difficile.jpg');
-A = imread('facile.png');
+A = imread('difficile.jpg');
+%A = imread('cahier.jpg');
 %A = imread('cahier.jpg');
 %A = imread('casino.jpg');
 %A = imread('mars.jpg');

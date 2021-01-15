@@ -1,12 +1,4 @@
-clear;clc;close all;
-
-
-addpath('codes_barres_img/');
-img = double(imread('cahier.jpg'));
-
-%img = imresize(img, 1/2);
-
-img_Y = (0.229*img(:,:,1)+0.587*img(:,:,2)+0.114*img(:,:,3));
+function [M] = do_masque(img_Y)
 [h,w] = size(img_Y);
 sigma_g =1*[1/3 1/(2*sqrt(2)) 0.5 1/sqrt(2) 1 sqrt(2) 2];
 D = zeros(h,w,length(sigma_g));
@@ -16,16 +8,15 @@ for i=1:length(sigma_g)
 end
 % D=detect_interest_area(img_Y,sigma_g(1));
 %%
-close all;clc;
 for i=1:length(sigma_g)
     seuil = 0.7;
     masque(:,:,i) = D(:,:,i) > seuil;
     if(max(max(masque(:,:,i))))
-        figure,
-        subplot(1,2,1)
-        imshow(uint8(img_Y));
-        subplot(1,2,2)
-        imshow(uint8(masque(:,:,i).*img_Y));
+%         figure,
+%         subplot(1,2,1)
+%         imshow(uint8(img_Y));
+%         subplot(1,2,2)
+%         imshow(uint8(masque(:,:,i).*img_Y));
     end
 end
 
@@ -47,10 +38,5 @@ for i=1:length(sigma_g)
         M = masque_final(:,:,i);
     end
 end
-enlargeX=50
-enlargeY=0
-[row,col] = find(M);
-code = img(min(row)-enlargeX:max(row)+enlargeX,min(col)-enlargeY:max(col)+enlargeY);
+end
 
-figure,
-imshow(uint8(code))
