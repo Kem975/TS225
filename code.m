@@ -17,7 +17,9 @@ function tab = code(A)
     rayon_dist = round( sqrt( X_dist^2 + Y_dist^2 ) );
     N = 256;
     %% Code-Barre
-
+    hold on;
+    scatter(x(1),x(2));
+    scatter(y(1),y(2));
     rayon = zeros(3, rayon_dist);
 
     for i=1:rayon_dist
