@@ -6,18 +6,18 @@ addpath('codes_barres_img/')
 %str = 'cahier.jpg';
 %A = imread(str);
 %A = imread('code_barre_bouteille.jpg');
-<<<<<<< HEAD
+
 A = imread('album.jpg');
-=======
+
 %A = imread('difficile.jpg');
-<<<<<<< HEAD
+
 A = imread('facile.png');
 %A = imread('cahier.jpg');
-=======
->>>>>>> 2cfd7806762010d732b6c46563f080e2db547b70
+
+
 %A = imread('facile.png');
 A = imread('cahier.jpg');
->>>>>>> e727f3da6c78245adaa160e53b6a7d4c8620f3f5
+
 %A = imread('casino.jpg');
 %A = imread('mars.jpg');
 Y = 0.299*A(:,:,1) + 0.587*A(:,:,2) + 0.114*A(:,:,3);
