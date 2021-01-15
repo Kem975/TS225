@@ -14,7 +14,7 @@ A = imread('difficile.jpg');
 
 imagesc(A);
 
-nbre_essai = 1;
+nbre_essai = 10;
 
 result = zeros(13,nbre_essai);
 

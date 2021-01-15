@@ -47,7 +47,7 @@ for i=1:length(sigma_g)
         M = masque_final(:,:,i);
     end
 end
-enlargeX=50
+enlargeX=0
 enlargeY=0
 [row,col] = find(M);
 code = img(min(row)-enlargeX:max(row)+enlargeX,min(col)-enlargeY:max(col)+enlargeY);
