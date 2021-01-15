@@ -4,7 +4,7 @@ clear;clc;close all;
 addpath('codes_barres_img/');
 img = double(imread('bouteille2.jpg'));
 
-%img = imresize(img, 1/2);
+img = imresize(img, 1/2);
 
 img_Y = (0.229*img(:,:,1)+0.587*img(:,:,2)+0.114*img(:,:,3));
 [h,w] = size(img_Y);
@@ -17,17 +17,16 @@ end
 % D=detect_interest_area(img_Y,sigma_g(1));
 %%
 close all;clc;
-masque = zeros(h,w,length(sigma_g));
 for i=1:length(sigma_g)
-    seuil = 0.75;
-    masque(:,:,i) = D(:,:,i) > seuil;
-%     if(max(max(masque(:,:,i))))
-%         figure,
-%         subplot(1,2,1)
-%         imshow(uint8(img_Y));
-%         subplot(1,2,2)
-%         imshow(uint8(masque(:,:,i).*img_Y));
-%     end
+    seuil = 0.7;
+    masque = D(:,:,i) > seuil;
+    if(max(max(masque)))
+        figure,
+        subplot(1,2,1)
+        imshow(uint8(img_Y));
+        subplot(1,2,2)
+        imshow(uint8(masque.*img_Y));
+    end
 end
 
 %%
