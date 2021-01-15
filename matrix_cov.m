@@ -24,6 +24,7 @@ function [cov,Ex,Ey] = matrix_cov( region_interet )
         end
     end
     cov = 1/N*cov;
+    cov(2,1)=cov(1,2);
     
 end
 
